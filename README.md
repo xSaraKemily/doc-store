@@ -1,6 +1,6 @@
 # 🚀 Setup
 
-📌 Tech Stack: Laravel 11, PHP 8.3, MySQL 8.0, RabbitMQ, Bootstrap, Jquery, JavaScript
+📌 <mark>Tech Stack:<mark> Laravel 11, PHP 8.3, MySQL 8.0, RabbitMQ, Docker, Docker Compose, Bootstrap, Jquery, JavaScript
 
 📌 <mark>This setup assumes you have Docker installed<mark>
 
