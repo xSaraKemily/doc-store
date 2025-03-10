@@ -12,6 +12,10 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+
 
 class FileController extends Controller
 {
@@ -37,5 +41,14 @@ class FileController extends Controller
     public function destroy(string $id): void
     {
         DeleteFilesAction::execute(Collection::make([$id]));
+    }
+
+    public function download(string $id): BinaryFileResponse
+    {
+        $file = File::find($id);
+
+        $path = Storage::disk('local')->path($file->path);
+
+        return Response::download($path, $file->filename);
     }
 }
