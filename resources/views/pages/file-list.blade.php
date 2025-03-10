@@ -15,8 +15,8 @@
             <tbody>
                 @foreach($files as $file)
                     <tr>
-                        <td>{{ $file->filename }}</td>
-                        <td>{{ $file->created_at->format('m/d/Y') }}</td>
+                        <td class="col-6" title="{{$file->filename}}">{{ Str::limit($file->filename, 70, '...') }}</td>
+                        <td class="col-4">{{ $file->created_at->format('m/d/Y') }}</td>
                         <td>
                             <button class="btn btn-danger open-delete-modal-button" data-bs-toggle="modal" data-bs-target="#deleteModal" data-file-id="{{ $file->id }}">Delete</button>
                         </td>

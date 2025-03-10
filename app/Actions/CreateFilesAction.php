@@ -13,9 +13,15 @@ class CreateFilesAction
         $filesToSave = [];
 
         foreach ($files as $file) {
+            $path = $file->store('uploads');
+
+            if (!$path) {
+                throw new \Exception('File upload failed');
+            }
+
             $filesToSave[] = [
                 'filename' => $file->getClientOriginalName(),
-                'path' => $file->store('uploads'),
+                'path' => $path,
                 'size' => $file->getSize()
             ];
         }

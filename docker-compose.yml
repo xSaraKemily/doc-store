@@ -1,13 +1,14 @@
 version: "3"
 
 services:
-    # image project
+    # project image
     app:
         build:
             context: .
             dockerfile: Dockerfile
         restart: unless-stopped
         working_dir: /var/www/
+        command: bash -c "chown -R www-data:www-data /var/www/storage && chmod -R 775 /var/www/storage && php-fpm"
         volumes:
             - ./:/var/www
         networks:
@@ -35,7 +36,7 @@ services:
             MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
             MYSQL_PASSWORD: ${DB_PASSWORD:-userpass}
             MYSQL_USER: ${DB_USERNAME:-username}
-#            MYSQL_ALLOW_EMPTY_PASSWORD: yes
+        command: --default-time-zone='America/New_York'
         volumes:
             - ./.docker/mysql/dbdata:/var/lib/mysql
         ports:
@@ -43,7 +44,28 @@ services:
         networks:
             - laravel
 
+    rabbitmq:
+        image: rabbitmq:3-management
+        restart: unless-stopped
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+        environment:
+            RABBITMQ_DEFAULT_USER: user
+            RABBITMQ_DEFAULT_PASS: password
+        networks:
+            - laravel
 
+    cron:
+        build:
+            context: ./docker/cron
+            dockerfile: Dockerfile
+        command: ["sh", "-c", "chown root:root /etc/crontabs/root && crond -f"]
+        volumes:
+            - ./:/var/www
+            - ./docker/cron/crontab/:/etc/crontabs/root
+        networks:
+            - laravel
 networks:
     laravel:
         driver: bridge
