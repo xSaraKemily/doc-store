@@ -1,4 +1,6 @@
-# Setup
+# 🚀 Setup
+
+📌 <mark>This setup assumes you have Docker installed<mark>
 
 Clone Repository  
 
