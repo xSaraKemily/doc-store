@@ -72,6 +72,15 @@ cd storage/app/private/uploads
 ls
 ```
 
+## <mark>Important:</mark>  The project's timezone is America/New_York
 ## Access to Project: http://localhost:8000
 ## Access to RabbitMQ: http://localhost:15672 (login: user / password: password)
-# The project's timezone is America/New_York
+
+---
+
+![image](https://github.com/user-attachments/assets/0a20323d-dbad-47bb-988b-6e7b2129a908)
+
+![image](https://github.com/user-attachments/assets/c80ea51a-411c-4f07-9e3e-9cf92d5c8633)
+
+![image](https://github.com/user-attachments/assets/8ec119f1-d9ea-4814-a32b-729fcb7093b5)
+
