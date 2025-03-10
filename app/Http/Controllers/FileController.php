@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Actions\CreateFilesAction;
 use App\Actions\DeleteFileAction;
+use App\Actions\DeleteFilesAction;
 use App\Http\Requests\StoreFileRequest;
 use App\Models\File;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class FileController extends Controller
 {
@@ -33,13 +34,8 @@ class FileController extends Controller
         return response()->json(['message' => 'No files uploaded.'], 400);
     }
 
-    public function update(Request $request, File $file)
-    {
-        //
-    }
-
     public function destroy(string $id): void
     {
-        DeleteFileAction::execute($id);
+        DeleteFilesAction::execute(Collection::make([$id]));
     }
 }

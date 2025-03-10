@@ -8,7 +8,7 @@ use Illuminate\Console\Command;
 
 class DeleteOldFilesCommand extends Command
 {
-    protected $signature = 'app:delete-files-command';
+    protected $signature = 'app:delete-old-files-command';
 
     protected $description = 'Delete files 24 hours old';
 
