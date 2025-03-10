@@ -1,13 +1,10 @@
 import {getCsrfToken} from "../helpers.js";
 
 $('.open-delete-modal-button').click(function () {
-    console.log($(this).data('file-id'))
     $('#idToDeleteInput').val($(this).data('file-id'));
-    console.log( $('#idToDeleteInput').val());
 });
 
 $('#deleteModal').on('hidden.bs.modal', function (e) {
-    console.log('esconde modal')
     clearIdToDelete();
 });
 
@@ -16,8 +13,6 @@ $("#deleteButton").click(function() {
 });
 
 function deleteFile() {
-    console.log('deleteFile ', $('#idToDeleteInput').val());
-
     $.ajax({
         type: 'DELETE',
         url: '/files/' + $('#idToDeleteInput').val(),
