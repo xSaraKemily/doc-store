@@ -83,7 +83,6 @@ return [
                 'exchange' => [
                     'name' => env('RABBITMQ_EXCHANGE_NAME', 'default'),
                     'type' => env('RABBITMQ_EXCHANGE_TYPE', 'direct'),
-                    'declare' => env('RABBITMQ_EXCHANGE_DECLARE', true),
                 ],
             ],
         ],
