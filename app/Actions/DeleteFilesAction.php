@@ -13,11 +13,13 @@ class DeleteFilesAction
     {
         $filesQuery = File::whereIn('id', $ids);
 
-        self::deleteFromStorage($filesQuery->get());
+        $files = $filesQuery->get();
+
+        self::deleteFromStorage($files);
 
         $filesQuery->delete();
 
-        SendDeletedFilesMailJob::dispatch()->onQueue('default');
+        SendDeletedFilesNotificationAction::execute($files);
     }
 
     private static function deleteFromStorage(Collection $files): void
