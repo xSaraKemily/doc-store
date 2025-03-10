@@ -44,4 +44,8 @@ COPY docker/php/custom.ini /usr/local/etc/php/conf.d/custom.ini
 # Make artisan executable
 RUN chmod +x /var/www/artisan
 
+RUN mkdir -p bootstrap/cache && \
+    chown -R www-data:www-data bootstrap/cache && \
+    chmod -R 775 bootstrap/cache
+
 USER root
