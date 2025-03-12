@@ -10,10 +10,10 @@ This project is a web application built with **Laravel** for temporarily storing
 - **Message sent to RabbitMQ** when a file is deleted (automatically or manually).  
 
 ## 🛠️ Technologies Used  
-- **Backend:** Laravel  
+- **Backend:** PHP + Laravel  
 - **Database:** MySQL  
 - **Messaging:** RabbitMQ  
-- **Frontend:** Bootstrap + jQuery  
+- **Frontend:** Bootstrap + jQuery + JavaScript
 - **Infrastructure:** Docker/Docker Compose  
 
 ![image](https://github.com/user-attachments/assets/0a20323d-dbad-47bb-988b-6e7b2129a908)
